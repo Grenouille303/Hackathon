@@ -6,10 +6,12 @@ export const createUser = async (
   email,
   passwordHash,
   verifyToken,
+  first_name,
+  last_name,
   role = "USER" ) => {
   const [result] = await db.query(
-    "INSERT INTO users (email, password_hash, verify_token, role) VALUES (?, ? , ? , ? ) ",
-    [email, passwordHash, verifyToken, role],
+    "INSERT INTO users (email, password_hash, verify_token, first_name, last_name, role ) VALUES (?, ? , ? , ?, ?, ? ) ",
+    [email, passwordHash, verifyToken, first_name, last_name, role],
   );
 
   return result.insertId;

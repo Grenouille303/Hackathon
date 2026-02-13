@@ -12,7 +12,7 @@ import { sendVeerificationMail } from "../config/mailer.js";
 
 export const register = async (req, res) => {
     try {
-        const {email, password} = req.body;
+        const {email, password, first_name, last_name} = req.body;
 
         console.log('register',req.body);
         
@@ -22,7 +22,7 @@ export const register = async (req, res) => {
         const passwordHash = await argon2.hash(password);
         const verifyToken = uuid4();
 
-        await createUser(email, passwordHash, verifyToken)
+        await createUser(email, passwordHash, verifyToken, first_name,  last_name)
 
         await sendVeerificationMail(email, verifyToken);
 

@@ -27,3 +27,5 @@ CREATE TABLE `hackathon_db`.`password` (
      `id` INT NOT NULL AUTO_INCREMENT , 
      `name` VARCHAR(150) NOT NULL , 
      `id_users` INT NOT NULL , PRIMARY KEY (`id`), UNIQUE (`id_users`)) ENGINE = InnoDB; 
+
+     ALTER TABLE `users` ADD `first_name` VARCHAR(50) NULL AFTER `updated_at`, ADD `last_name` VARCHAR(50) NULL AFTER `first_name`; 
